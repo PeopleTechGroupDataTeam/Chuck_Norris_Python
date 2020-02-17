@@ -1,0 +1,64 @@
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>HTML  Image</h2>
+
+<img src="test.jpg" alt="Something" width="500" height="333">
+
+
+<h1> Checking change 5 sec  window</h1>
+
+<p>A script that runs every 5 seconds</p>
+
+
+
+<p id="demo"></p>
+
+<script>
+var Http =  new XMLHttpRequest();
+var url = 'https://api.chucknorris.io/jokes/random'
+var myVar = setInterval(open, 5000);
+
+function open(){
+    Http.open("GET", url, true);
+    Http.onreadystatechange = myFunction
+    Http.send();
+}
+
+function myFunction() {
+    if(Http.readyState == 4 && Http.status == 200 ){
+        var result =  JSON.parse(Http.responseText);
+        document.getElementById("demo").innerHTML = result.value;
+
+    }
+}
+</script>
+
+<h1> See list of categories</h1>
+<form action = "http://localhost:5000/categories" method = "POST">
+    <p><input type = "submit" value = "Get Category" /></p>
+</form>
+
+<h1> Category Joke</h1>
+<form action = "http://localhost:5000/categories_joke" method = "POST">
+    <p>Category Name<input type = "text" name = "Category_Name" /></p>
+    <p><input type = "submit" value = "submit" /></p>
+</form>
+
+<h1> Random Joke</h1>
+<form action = "http://localhost:5000/random" method = "POST">
+    <p><input type = "submit" value = "Random" /></p>
+</form>
+
+<h1> Free Text</h1>
+<form action = "http://localhost:5000/free_text" method = "POST">
+    <p>Free text<input type = "text" name = "Free_Text" /></p>
+    <p><input type = "submit" value = "submit" /></p>
+</form>
+
+
+</body>
+</html>

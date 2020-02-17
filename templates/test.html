@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+   <h1> Category List</h1>
+   <p id="demo"></p>
+   <a href="https://api.chucknorris.io/jokes/random?category=dev" id="link" onclick="return doalert(this);"><li>Dev</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=animal" id="link" onclick="return doalert(this);"><li>Animal</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=career" id="link" onclick="return doalert(this);"><li>Career</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=celebrity" id="link" onclick="return doalert(this);"><li>Celebrity</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=explicit" id="link" onclick="return doalert(this);"><li>Explicit</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=fashion" id="link" onclick="return doalert(this);"><li>Fashion</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=food" id="link" onclick="return doalert(this);"><li>Food</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=history" id="link" onclick="return doalert(this);"><li>History</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=money" id="link" onclick="return doalert(this);"><li>Money</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=movie" id="link" onclick="return doalert(this);"><li>Movie</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=music" id="link" onclick="return doalert(this);"><li>Music</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=political" id="link" onclick="return doalert(this);"><li>Political</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=religion" id="link" onclick="return doalert(this);"><li>Religion</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=science" id="link" onclick="return doalert(this);"><li>Science</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=sport" id="link" onclick="return doalert(this);"><li>Sport</li></a>
+   <a href="https://api.chucknorris.io/jokes/random?category=travel" id="link" onclick="return doalert(this);"><li>Travel</li></a>
+</body>
+</html>
+
+<script>
+var Http =  new XMLHttpRequest();
+
+function doalert(obj) {
+
+   console.log('Coming  here')
+   var URL = obj.getAttribute("href")
+   Http.open("GET",URL,true);
+   Http.onreadystatechange = myFunction
+   Http.send();
+   return false;
+   }
+function myFunction(){
+   if(Http.readyState == 4 && Http.status == 200 ){
+      var result =  JSON.parse(Http.responseText);
+      document.getElementById("demo").innerHTML = result.value;
+   }
+}
+
+</script>
